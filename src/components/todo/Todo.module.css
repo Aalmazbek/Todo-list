@@ -1,0 +1,68 @@
+.completed{
+    text-decoration: line-through;
+}
+
+
+
+
+.Todo{
+    padding: 15px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.Todo > div{
+    display: flex;
+    align-items: center;
+
+}
+
+
+
+.Todo > div:nth-of-type(1){
+    padding-right: 3vw;
+}
+
+
+.Todo > div:nth-of-type(1) input[type=checkbox]{
+    width: 1.1vw;
+    height: 1.1vw;
+
+    margin-right: 15px;
+
+    cursor: pointer;
+}
+
+
+
+
+
+.Todo > div:nth-of-type(2){
+    gap: 0.5vw;
+}
+
+
+.Todo > div:nth-of-type(2) button{
+    padding: 10px 15px;
+
+    color: white;
+    background-color: rgb(111, 0, 255);
+
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.Todo > div:nth-of-type(2) button:hover{
+    background-color: rgb(150, 0, 255);
+}
+
+.Todo > div:nth-of-type(2) button:active{
+    transition: 0.1s;
+    transform: scale(0.95);
+    background-color: rgb(78, 0, 180);
+}

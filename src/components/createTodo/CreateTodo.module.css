@@ -1,0 +1,45 @@
+.CreateTodo{
+    height: 35px;
+    display: flex;
+}
+
+
+.CreateTodo > input{
+    height: 100%;
+}
+
+
+
+.CreateTodo > input[type=text]{
+    width: 75%;
+
+    padding: 0 10px;
+
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+}
+
+
+
+.CreateTodo > input[type=submit]{
+    width: 25%;
+    background-color: rgb(111, 0, 255);
+
+    color: white;
+
+    border: none;
+    border-radius: 0 5px 5px 0;
+
+    cursor: pointer;
+}
+
+.CreateTodo > input[type=submit]:hover{
+    background-color: rgb(150, 0, 255);
+}
+
+.CreateTodo > input[type=submit]:active{
+    transition: 0.1s;
+    /* transform: scale(0.95) translateX(-2%); */
+    background-color: rgb(78, 0, 180);
+}
