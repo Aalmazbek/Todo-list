@@ -6,7 +6,7 @@ const CreateTodo = (props) => {
     return (
         <div className={css.CreateTodo}>
             <input type="text" />
-            <input type="submit" value="+Add" onClick={handleClick} />
+            <input type="submit" value="+Add" />
         </div>
     )
 }
