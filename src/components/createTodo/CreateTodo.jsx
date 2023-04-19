@@ -1,13 +1,16 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { addTodo } from '../../redux/todosSlice';
 import css from './CreateTodo.module.css'
 
 
 let checkSpaces = (str) => str.trim() === "";
 
 
-const CreateTodo = (props) => {
-    
+const CreateTodo = () => {
+    const dispatch = useDispatch()
     const [inputValue, setInputValue] = useState("")
+
 
     const submit = (e) => {
         e.preventDefault()
@@ -16,9 +19,11 @@ const CreateTodo = (props) => {
             return
         }
 
-        props.addTodo(inputValue)
+        dispatch(addTodo(inputValue))
+        // props.addTodo(inputValue)
         setInputValue("")
     }
+
 
     const handleChange = (e) => {
         setInputValue(e.target.value)

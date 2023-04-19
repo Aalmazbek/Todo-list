@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteTodo, editTodo, onSatusChange } from '../../redux/todosSlice';
 import css from './Todo.module.css'
 
 
 
 const Todo = (props) => {
-    // console.log(props.status);
+    const dispatch = useDispatch()
+    
     const [inputValue, setInputValue] = useState(props.title ? props.title : "")
 
     const handleChange = (e) => {
@@ -12,15 +15,36 @@ const Todo = (props) => {
     }
 
 
+    const handleStatus = () => {
+        dispatch(onSatusChange(props.id))
+    }
+
+
 
     const closeEdit = (e) => {
-        // e.target.parentElement.parentElement.parentElement.style.transform = "translateX(-50%)"
         e.target.parentElement.parentElement.parentElement.style.transform = "translateX(0)"
     }
 
     const openEdit = (e) => {
         e.target.parentElement.parentElement.parentElement.style.transform = "translateX(-50%)"
-        // e.target.parentElement.parentElement.parentElement.style.transform = "translateX(0)"
+    }
+
+
+
+    const deleteTodoFunc = (e, id) => {
+      let todo = e.target.parentElement.parentElement.parentElement
+
+      todo.style.transition = "0.3s"
+      todo.style.transform = "translateX(100%)"
+
+      setTimeout(() => {
+        dispatch(deleteTodo(id))
+      }, 300)
+    }
+
+
+    const editTodoFunc = (id) => {
+        dispatch(editTodo({id: props.id, title: inputValue}))
     }
 
     
@@ -31,13 +55,13 @@ const Todo = (props) => {
         <div className={css.Todo}>
             <div className=''>
                 <div>
-                    <input type="checkbox" name="" id="" checked={props.status} onChange={() => props.changeStatus(props.status, props.id)} />
+                    <input type="checkbox" name="" id="" checked={props.status} onChange={handleStatus} />
                     <p className={props.status ? css.completed : ""} >{props.title}</p>
                 </div>
 
                 <div>
                     <button onClick={openEdit}>Edit</button>
-                    <button onClick={() => props.deleteTodo(props.id)}>Del</button>
+                    <button onClick={(e) => deleteTodoFunc(e, props.id)}>Del</button>
                 </div>
             </div>
 
@@ -51,7 +75,7 @@ const Todo = (props) => {
                         setTimeout(() => {
                             closeEdit(e)
                         }, 200)
-                        props.changeTodo(props.id, inputValue)
+                        editTodoFunc()
                     }}>Save</button>
                     <button onClick={closeEdit}>Cancel</button>
                 </div>

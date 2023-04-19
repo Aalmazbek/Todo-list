@@ -32,8 +32,11 @@
 .todosWrapper{
   margin-top: 15px;
   
-  border: 1px solid rgba(0, 0, 0, 0.5);
   overflow-x: hidden;
+
+  transition: 1s;
+
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 
