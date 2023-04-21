@@ -13,7 +13,8 @@
 
 
 .App{
-  width: 555px;
+  max-width: 555px;
+  width: 95%;
   min-height: 120px;
 
   margin: 120px auto;
