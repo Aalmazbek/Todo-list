@@ -1,18 +1,21 @@
+import React from 'react';
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../../redux';
+
 import { addTodo } from '../../redux/todosSlice';
 import css from './CreateTodo.module.css'
 
 
-let checkSpaces = (str) => str.trim() === "";
+let checkSpaces = (str: string) => str.trim() === "";
 
 
 const CreateTodo = () => {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const [inputValue, setInputValue] = useState("")
 
 
-    const submit = (e) => {
+    const submit = (e: { preventDefault: () => void; }) => {
         e.preventDefault()
         if (checkSpaces(inputValue)) {
             setInputValue("")
@@ -25,7 +28,7 @@ const CreateTodo = () => {
     }
 
 
-    const handleChange = (e) => {
+    const handleChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
         setInputValue(e.target.value)
     }
 

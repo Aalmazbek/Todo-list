@@ -1,8 +1,11 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
+
 import './App.css';
 import Header from './components/header/Header'
 import CreateTodo from './components/createTodo/CreateTodo';
 import Todo from './components/todo/Todo';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from './redux';
 
 
 
@@ -10,8 +13,7 @@ import { useSelector } from 'react-redux';
 
 
 function App() {
-  const todosArray = useSelector(state => state.data)
-  console.log(todosArray);
+  const todosArray = useAppSelector(state => state.data)
 
   return (
     <div className="App">

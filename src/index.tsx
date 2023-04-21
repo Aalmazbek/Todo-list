@@ -7,7 +7,11 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+
+let num: number | string = 10;
+num = 'hello'
+
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
