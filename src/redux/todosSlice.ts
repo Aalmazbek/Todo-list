@@ -5,6 +5,7 @@ if (localStorage.getItem('todos')) {
   datas = JSON.parse(localStorage.getItem('todos') || "")
 } else{
   localStorage.setItem('todos', JSON.stringify([]))
+  window.location.reload();
 }
 
 // export const todosSlice = createSlice({
