@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './App.css';
 import Header from './components/header/Header'
@@ -20,10 +20,7 @@ function App() {
   useEffect(() => {
     console.log('hello');
   }, [])
-  
-  useEffect(() => {
-    console.log('hello');
-  }, [])
+  const [test, setTest] = useState()
 
   return (
     <div className="App">
