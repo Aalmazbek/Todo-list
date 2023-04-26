@@ -19,7 +19,10 @@ function App() {
 
   useEffect(() => {
     console.log('hello');
-    
+  }, [])
+  
+  useEffect(() => {
+    console.log('hello');
   }, [])
 
   return (
