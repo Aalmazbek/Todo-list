@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { todoType } from "../types";
 
 let datas
 if (localStorage.getItem('todos')) {
@@ -8,71 +9,38 @@ if (localStorage.getItem('todos')) {
   window.location.reload();
 }
 
-// export const todosSlice = createSlice({
-//   name: 'todos',
-//   initialState: {
-//     data: datas ? datas : [],
-//     isLoading: false
-//   },
-//   reducers: {
-//     addTodo: (state, action) => {
-//       state.data.unshift({
-//         id: Date.now(),
-//         title: action.payload,
-//         status: false
-//       })
-//     },
-//     deleteTodo: (state, {payload}) => {
-//       state.data = state.data.filter(elem => elem.id !== payload)
-//     },
-//     editTodo: (state, {payload}) => {
-//       state.data = state.data.map(elem => {
-//         if (elem.id === payload.id) {
-//           return({...elem, title: payload.title})
-//         }
-//         return elem
-//       })
-//     },
-//     onSatusChange: (state, {payload}) => {
-//       state.data = state.data.map(elem => {
-//         if (elem.id === payload) {
-//           return({...elem, status: !elem.status})
-//         }
-//         return elem
-//       })
-//     }
-//   }
-// })
 
-
-interface todosState {
-  data: {id: number, title: string, status: boolean}[],
+interface todoSliceType {
+  data: todoType[],
   isLoading: boolean
 }
 
-const initialState = {
-  data: datas,
-  isLoading: false
-} as todosState
+// const initialState = {
+//   data: datas,
+//   isLoading: false
+// } as todoSliceType
 
 export const todosSlice = createSlice({
   name: 'todos',
-  initialState,
+  initialState: {
+    data: datas,
+    isLoading: false
+  } as todoSliceType,
   reducers: {
     addTodo: (state, action:PayloadAction<string>) => {
       state.data.unshift({
         id: Date.now(),
         title: action.payload,
-        status: false
+        status: false,
       })
     },
     deleteTodo: (state, action:PayloadAction<number>) => {
       state.data = state.data.filter(elem => elem.id !== action.payload)
     },
-    editTodo: (state, action:PayloadAction<{ id: number, title: string }>) => {
+    editTodo: (state, action:PayloadAction<{ id: number, inputValue: string }>) => {
       state.data = state.data.map(elem => {
         if (elem.id === action.payload.id) {
-          return({...elem, title: action.payload.title})
+          return({...elem, title: action.payload.inputValue})
         }
         return elem
       })

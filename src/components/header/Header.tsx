@@ -4,13 +4,16 @@ import { useAppSelector } from '../../redux';
 
 import css from './Header.module.css'
 
+interface PropType {
+    completedTodos: number,
+    totalTodos: number
+}
 
-const Header = () => {
-    const todosArray = useAppSelector(state => state.data)
+const Header: React.FC<PropType> = ({completedTodos, totalTodos}) => {
 
     return (
         <div className={css.header}>
-            <h1>Todos ({todosArray.reduce((sum, current) => current.status ? sum + 1 : sum, 0)} / {todosArray.length})</h1>
+            <h1>Todos ({completedTodos} / {totalTodos})</h1>
         </div>
     )
 }
