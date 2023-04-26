@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './App.css';
 import Header from './components/header/Header'
@@ -13,6 +13,8 @@ import { useAppSelector } from './redux';
 
 function App() {
   const todosArray = useAppSelector(state => state.data)
+
+  const [test, setTest] = useState()
 
   return (
     <div className="App">
