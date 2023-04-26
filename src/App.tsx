@@ -14,10 +14,13 @@ import { useAppSelector } from './redux';
 function App() {
   const todosArray = useAppSelector(state => state.data)
 
+  const completedTodos = todosArray.reduce((sum, current) => current.status ? sum + Number(current.status) : sum, 0)
+  const totalTodos = todosArray.length
+
   return (
     <div className="App">
 
-      <Header />
+      <Header completedTodos={completedTodos} totalTodos={totalTodos} />
 
       <div className='content'>
 
@@ -31,12 +34,7 @@ function App() {
           <Todo title="Погулять"/>  */}
 
           {todosArray.map(elem => (
-            <Todo 
-              key={elem.id} 
-              title={elem.title} 
-              status={elem.status} 
-              id={elem.id} 
-            />
+            <Todo key={elem.id} {...elem} />
           ))}
 
         </div>
