@@ -17,6 +17,8 @@ function App() {
   const completedTodos = todosArray.reduce((sum, current) => current.status ? sum + Number(current.status) : sum, 0)
   const totalTodos = todosArray.length
 
+  const [test, setTest] = useState()
+
   return (
     <div className="App">
 
