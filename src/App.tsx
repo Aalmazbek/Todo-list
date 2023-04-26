@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './App.css';
 import Header from './components/header/Header'
@@ -17,6 +17,9 @@ function App() {
   const completedTodos = todosArray.reduce((sum, current) => current.status ? sum + Number(current.status) : sum, 0)
   const totalTodos = todosArray.length
 
+  useEffect(() => {
+    console.log('hello');
+  }, [])
   const [test, setTest] = useState()
 
   return (
